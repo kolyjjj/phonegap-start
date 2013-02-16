@@ -21,22 +21,67 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="format-detection" content="telephone=no" />
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Hello World</title>
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+		<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+		
+		<script src="data/foods.json" type="text/javascript"></script>
+        <script src="phonegap.js"></script>
+
+		<title>Hello World</title>
     </head>
     <body>
-        <div class="app">
-            <h1>PhoneGap</h1>
-            <div id="deviceready">
-                <p class="status pending blink">Connecting to Device</p>
-                <p class="status complete blink hide">Device is Ready</p>
-            </div>
+        
+        <div data-role="page" id="front_page" data-title="front_page">
+        	<div data-role="header">
+        		<h1>订餐</h1>
+        	</div>
+         	<div data-role="content">
+	         	<a href="#book" data-role="button">帮订餐</a>
+	        	<a href="#orders" data-role="button" id="order">看订单</a>
+         	</div>
         </div>
-        <script type="text/javascript" src="phonegap.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript">
-            app.initialize();
-        </script>
+        <div data-role="page" id="book" data-title="订餐">
+        	<div data-role="header">
+        		<a href="#front_page" >Back</a>
+        		<h1>订餐</h1>
+        	</div>
+        	<div data-role="content">
+        	
+	        	<label>人：</label>
+	        	<input type="text" readonly id="show_user"></input>
+	        	<a href="#user" data-role="button" id="choose_people">选人</a>
+	        	
+	        	<label>餐厅：</label>
+	        	<input type="text" id="show_restaurant" readonly></input>
+	        	<a href="#restaurant" data-role="button" id="choose_restaurant">选餐厅</a>
+	        	
+	        	<label>套餐：</label>
+	        	<input type="text" readonly id="show_suits"></input>
+	        	<a href="#food_suit" data-role="button" id="choose_suit">选套餐</a>
+	        	
+	        	<a href="#confirm" data-role="button" id="confirm">确认</a>
+        	</div>
+        </div>
+        
+		<div data-role="page" id="orders" data-add-back-btn="true" data-title="订单">
+        	<div data-role="header">
+        		<a href="#front_page">Back</a>
+        		<h1>订单显示</h1>
+        	</div>
+        	<div data-role="content">
+        		<ul data-role="listview" id="order_list">
+        			
+        		</ul>
+        	</div>
+        	<div data-role="footer" id="order_footer">
+        	</div>
+        </div>
+        
+        <script src="data/restaurants.json" type="text/javascript"></script>
+		<script src="data/users.json" type="text/javascript"></script>
+		<script src="js/index.js" type="text/javascript"></script>
     </body>
 </html>
